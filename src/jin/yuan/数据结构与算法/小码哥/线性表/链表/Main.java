@@ -4,6 +4,7 @@ public class Main {
    public static void main(String[] args) {
       LinkedList<Integer> linkedList = new LinkedList<>();
       linkedList.add(20);
+
       linkedList.add(10);
       linkedList.add(0);
       linkedList.set(0,100);

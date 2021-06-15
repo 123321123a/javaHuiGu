@@ -21,6 +21,7 @@ public class LinkedList<E> {
       return size;
    }
 
+
    //是否为空
    public boolean isEmpty(){
       return size == 0;
