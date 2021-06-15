@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--正确的为各种环境赋值-->
+    <bean id="car01" class="jin.yuan.bean.Car">
+        <property name="carName" value="宝马"/>
+        <property name="color" value="绿色"/>
+        <property name="price" value="30000"/>
+    </bean>
+
+    <bean class="jin.yuan.bean.Book" id="book2">
+        <property name="bookName" value="东游记"/>
+        <property name="author" value="吴承恩"/>
+    </bean>
+
+    <bean name="Person01" class="jin.yuan.bean.Person">
+        <!--所有复杂的赋值操作，要在property标签体内进行-->
+        <property name="lastName">
+            <null/>
+        </property>
+
+        <!--ref：代表引用外面的一个值-->
+        <property name="car" ref="car01"/>
+
+        <!--如何为list赋值-->
+        <property name="books">
+            <list>
+                <!--赋值方式一-->
+                <bean id="book1" class="jin.yuan.bean.Book" p:bookName="西游记"> </bean>
+                <!--赋值方式二-->
+                <ref bean="book2"/>
+            </list>
+        </property>
+
+        <!--如何为map赋值-->
+        <property name="maps">
+            <map>
+                <!--一个entry代表一个键值对-->
+                <entry key="key01" value="张三"/>
+                <entry key="key02" value="18"/>
+                <entry key="key03" value-ref="book2"/>
+                <entry key="key04">
+                    <bean class="jin.yuan.bean.Car"> <property name="carName" value="宝马"/> </bean>
+                </entry>
+            </map>
+        </property>
+
+        <!--properties所有的key/value都是String类型的-->
+        <property name="properties">
+            <props>
+                <prop key="username">root</prop>
+                <prop key="password">123456</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

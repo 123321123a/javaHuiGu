@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--引用外部属性文件 依赖名称空间-->
+    <context:property-placeholder location="classpath:dbconfig.properties"/>
+
+    <!--数据库连接池作为单实例是最好的，一个项目就一个连接池，连接池里面管理很多连接。连接从连接池中拿-->
+    <!--可以让spring 帮我们创建连接池对象，管理连接池-->
+    <bean id="comboPooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+        <property name="driverClass" value="${jdbc.driver}"></property>
+    </bean>
+
+
+    <!--
+        context: component-scan:自动组件扫描
+        base-package:指定扫描的基础包;把基础包及他下面所有的包的所有加了注解的类
+    -->
+    <context:component-scan base-package="jin.yuan">
+        <!--扫描的时候可以排除掉一些不用的组件-->
+        <!-- type="annotation"：指定排除的规则；按照注解进行排除 expression:注解的全类名 -->
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
