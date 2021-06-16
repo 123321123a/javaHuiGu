@@ -11,6 +11,5 @@ public class Main {
       linkedList.add(0,300);
       System.out.println(linkedList.toString());
       System.out.println("这是 master 分支的代码");
-
    }
 }
