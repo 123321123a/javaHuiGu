@@ -10,6 +10,7 @@ public class Main {
       linkedList.set(0,100);
       linkedList.add(0,300);
       System.out.println(linkedList.toString());
+      // test测试
       System.out.println("这是 hot-fix 分支的代码");
 
    }
